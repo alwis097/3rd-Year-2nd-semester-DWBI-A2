@@ -1,0 +1,238 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="97e96779-abbc-4d7a-9dc8-beb408212759" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Center Info</ID>
+  <Name>Dim Center Info</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1176" scrolltop="-2847" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="5842" y="9440" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="dimCenterInfo" left="-213" top="-106" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3450" height="3747" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e00007a0d0000a30e0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_dimCenterInfo" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1176</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-2847</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-213</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-106</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="2e674866-e652-4343-abb5-5aa0990a2dcb">
+    <DataSourceViewID>IT19960814-DWBI</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="329aa24e-cf67-4078-8a07-c2c0f1e523dd">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="483bf657-10b3-47c3-87d6-0aa9d9067c6c">
+      <ID>Center SK</ID>
+      <Name>Center SK</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="26317605-f313-497c-abd5-074d47afdf13">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8cc7bf99-28d7-4e0f-944c-ca1c97df7014">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>CenterSK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="89a6fd96-ad08-4d19-9e96-c830697c4a2d">
+          <AttributeID>Center Alternate ID</AttributeID>
+          <Name>Center Alternate ID</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b90ff650-c79e-44bf-b6a8-d56b97879799">
+          <AttributeID>City Code</AttributeID>
+          <Name>City Code</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7a36726c-4f89-4d25-ac2b-90127428c5a1">
+          <AttributeID>Region Code</AttributeID>
+          <Name>Region Code</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0fee2934-0d0d-4f8b-8709-54b807131050">
+          <AttributeID>Center Type</AttributeID>
+          <Name>Center Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="52772752-a38e-485b-8b28-535985b38aef">
+          <AttributeID>Op Area</AttributeID>
+          <Name>Op Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="fe6b1e39-8e57-421b-902d-feb557bf74da">
+          <AttributeID>Insert Date</AttributeID>
+          <Name>Insert Date</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c0298653-6ffe-4adf-816b-1a0c6766b8d7">
+          <AttributeID>Modify Date</AttributeID>
+          <Name>Modify Date</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d4268fa2-2738-4f31-9dbd-63fb559a8668">
+      <ID>Center Alternate ID</ID>
+      <Name>Center Alternate ID</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6b3fea03-322d-467b-9680-2670815fdc62">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2a09635f-bcb1-497f-b7ff-ab4655968ab2">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>CenterAlternateID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c20a8a11-d4fe-4479-a8c1-499696ecfabd">
+      <ID>City Code</ID>
+      <Name>City Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7daab417-6274-4687-8b77-89c05d4f4b08">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7aab3248-d9fe-40b1-b771-7ff4c5d82bb5">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>City_code</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="cf91d7e9-609b-47dc-8949-82da94e244fb">
+      <ID>Region Code</ID>
+      <Name>Region Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d1be02a1-a05a-407f-a562-8436a16e2336">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8345ec10-e721-4e72-9f55-cf092b50f677">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>region_code</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="49766154-f967-4bb4-9be5-79e5bccce856">
+      <ID>Center Type</ID>
+      <Name>Center Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="83e00aae-5265-4a20-a3e2-33834c8daa7a">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6a3e8cad-9374-4bb6-a6e6-1fd2081b8979">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>center_type</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5dbdb307-cf7f-4311-b4ac-a541e2f22467">
+      <ID>Op Area</ID>
+      <Name>Op Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bcd94157-7559-431e-a740-300f5ad42430">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="83771adb-9ac2-4bb3-bc33-18c97e4bfff5">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>op_area</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="60ad5a93-740b-4727-948c-59ef9f44646b">
+      <ID>Insert Date</ID>
+      <Name>Insert Date</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7b0ce16f-d9d6-43c0-adf9-174bc7db4fe8">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="431046a5-905c-4e33-994d-39cd5b8d2ef8">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>InsertDate</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1a77923f-62b0-46dc-b0c2-39a17c5290c0">
+      <ID>Modify Date</ID>
+      <Name>Modify Date</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c37944ca-01b1-49e3-9de0-95eee8238f6a">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7f736291-b636-41fd-99e0-247150662701">
+            <TableID>dbo_dimCenterInfo</TableID>
+            <ColumnID>ModifyDate</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

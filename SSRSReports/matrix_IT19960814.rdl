@@ -1,0 +1,1657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=ALWIS-PC;Initial Catalog=IT19960814-DW</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>d6e49ecf-3ec1-400d-aae0-d4b2fe25a415</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT
+  FactCheckout.base_price
+  ,DimDate.MonthYear
+  ,dimMealInfo.Meal_type
+FROM
+  FactCheckout
+  INNER JOIN dimMealInfo
+    ON FactCheckout.MealKey = dimMealInfo.MealSK
+  INNER JOIN DimDate
+    ON FactCheckout.DateKey = DimDate.DateKey</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="base_price" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MonthYear" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="Meal_type" />
+            </SelectedColumns>
+            <Joins>
+              <Join Type="CROSS JOIN" ColumnOwner="FactCheckout" />
+              <Join Type="INNER JOIN" ColumnOwner="dimMealInfo">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="MealKey" />
+                  <To ColumnOwner="dimMealInfo" ColumnName="MealSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="DimDate">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="DateKey" />
+                  <To ColumnOwner="DimDate" ColumnName="DateKey" />
+                </On>
+              </Join>
+            </Joins>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="base_price">
+          <DataField>base_price</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="MonthYear">
+          <DataField>MonthYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Meal_type">
+          <DataField>Meal_type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT
+  dimCenterInfo.CenterSK
+  ,dimCenterInfo.CenterAlternateID
+  ,dimCenterInfo.City_code
+  ,dimCenterInfo.region_code
+  ,dimCenterInfo.center_type
+  ,dimCenterInfo.op_area
+  ,dimCenterInfo.InsertDate AS [dimCenterInfo InsertDate]
+  ,dimCenterInfo.ModifyDate AS [dimCenterInfo ModifyDate]
+  ,dimCustomer.CustomerSK
+  ,dimCustomer.CustomerAlternateID
+  ,dimCustomer.CustomerFirstName
+  ,dimCustomer.CustomerLastName
+  ,dimCustomer.CustomerAddress
+  ,dimCustomer.City
+  ,dimCustomer.CustomerState
+  ,dimCustomer.Zip
+  ,dimCustomer.CustomerMobile
+  ,dimCustomer.StateProvince
+  ,dimCustomer.StartDate
+  ,dimCustomer.EndDate
+  ,dimCustomer.InsertDate AS [dimCustomer InsertDate]
+  ,dimCustomer.ModifyDate AS [dimCustomer ModifyDate]
+  ,DimDate.DateKey AS [DimDate DateKey]
+  ,DimDate.[Date]
+  ,DimDate.FullDateUK
+  ,DimDate.FullDateUSA
+  ,DimDate.DayOfMonth
+  ,DimDate.DaySuffix
+  ,DimDate.DayName
+  ,DimDate.DayOfWeekUSA
+  ,DimDate.DayOfWeekUK
+  ,DimDate.DayOfWeekInMonth
+  ,DimDate.DayOfWeekInYear
+  ,DimDate.DayOfQuarter
+  ,DimDate.DayOfYear
+  ,DimDate.WeekOfMonth
+  ,DimDate.WeekOfQuarter
+  ,DimDate.WeekOfYear
+  ,DimDate.[Month]
+  ,DimDate.MonthName
+  ,DimDate.MonthOfQuarter
+  ,DimDate.Quarter
+  ,DimDate.QuarterName
+  ,DimDate.[Year]
+  ,DimDate.YearName
+  ,DimDate.MonthYear
+  ,DimDate.MMYYYY
+  ,DimDate.FirstDayOfMonth
+  ,DimDate.LastDayOfMonth
+  ,DimDate.FirstDayOfQuarter
+  ,DimDate.LastDayOfQuarter
+  ,DimDate.FirstDayOfYear
+  ,DimDate.LastDayOfYear
+  ,DimDate.IsHolidaySL
+  ,DimDate.IsWeekday
+  ,DimDate.HolidaySL
+  ,DimDate.isCurrentDay
+  ,DimDate.isDataAvailable
+  ,DimDate.isLatestDataAvailable
+  ,dimMealInfo.MealSK
+  ,dimMealInfo.MealAlternateID
+  ,dimMealInfo.Catogery
+  ,dimMealInfo.Meal_type
+  ,dimMealInfo.InsertDate AS [dimMealInfo InsertDate]
+  ,dimMealInfo.ModifyDate AS [dimMealInfo ModifyDate]
+  ,dimOderInfo.OderSK
+  ,dimOderInfo.OderAlternateID
+  ,dimOderInfo.num_of_oders
+  ,dimOderInfo.InsertDate AS [dimOderInfo InsertDate]
+  ,dimOderInfo.ModifyDate AS [dimOderInfo ModifyDate]
+  ,FactCheckout.CheckoutID
+  ,FactCheckout.CustomerKey
+  ,FactCheckout.CenterKey
+  ,FactCheckout.MealKey
+  ,FactCheckout.OderKey
+  ,FactCheckout.DateKey AS [FactCheckout DateKey]
+  ,FactCheckout.Checkout_price
+  ,FactCheckout.base_price
+  ,FactCheckout.week
+  ,FactCheckout.emailer_for_promotion
+  ,FactCheckout.accm_txn_create_time
+  ,FactCheckout.accm_txn_complete_time
+  ,FactCheckout.txn_process_time_hours
+  ,FactCheckout.ModifyDate AS [FactCheckout ModifyDate]
+  ,FactCheckout.check_date
+FROM
+  FactCheckout
+  INNER JOIN dimCustomer
+    ON FactCheckout.CustomerKey = dimCustomer.CustomerSK
+  INNER JOIN dimMealInfo
+    ON FactCheckout.MealKey = dimMealInfo.MealSK
+  INNER JOIN dimCenterInfo
+    ON FactCheckout.CenterKey = dimCenterInfo.CenterSK
+  INNER JOIN dimOderInfo
+    ON FactCheckout.OderKey = dimOderInfo.OderSK
+  INNER JOIN DimDate
+    ON FactCheckout.DateKey = DimDate.DateKey</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="CenterSK" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="CenterAlternateID" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="City_code" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="region_code" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="center_type" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="op_area" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerSK" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerAlternateID" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerFirstName" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerLastName" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerAddress" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="City" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerState" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="Zip" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerMobile" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="StateProvince" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="StartDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="EndDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DateKey" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Date" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FullDateUK" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FullDateUSA" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DaySuffix" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekUSA" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekUK" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekInMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekInYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="WeekOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="WeekOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="WeekOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Month" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MonthName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MonthOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Quarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="QuarterName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Year" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="YearName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MonthYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MMYYYY" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FirstDayOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="LastDayOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FirstDayOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="LastDayOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FirstDayOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="LastDayOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="IsHolidaySL" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="IsWeekday" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="HolidaySL" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="isCurrentDay" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="isDataAvailable" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="isLatestDataAvailable" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="MealSK" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="MealAlternateID" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="Catogery" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="Meal_type" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="OderSK" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="OderAlternateID" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="num_of_oders" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="CheckoutID" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="CustomerKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="CenterKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="MealKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="OderKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="DateKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="Checkout_price" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="base_price" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="week" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="emailer_for_promotion" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="accm_txn_create_time" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="accm_txn_complete_time" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="txn_process_time_hours" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="check_date" />
+            </SelectedColumns>
+            <Joins>
+              <Join Type="CROSS JOIN" ColumnOwner="FactCheckout" />
+              <Join Type="INNER JOIN" ColumnOwner="dimCustomer">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="CustomerKey" />
+                  <To ColumnOwner="dimCustomer" ColumnName="CustomerSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="dimMealInfo">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="MealKey" />
+                  <To ColumnOwner="dimMealInfo" ColumnName="MealSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="dimCenterInfo">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="CenterKey" />
+                  <To ColumnOwner="dimCenterInfo" ColumnName="CenterSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="dimOderInfo">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="OderKey" />
+                  <To ColumnOwner="dimOderInfo" ColumnName="OderSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="DimDate">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="DateKey" />
+                  <To ColumnOwner="DimDate" ColumnName="DateKey" />
+                </On>
+              </Join>
+            </Joins>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="CenterSK">
+          <DataField>CenterSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CenterAlternateID">
+          <DataField>CenterAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="City_code">
+          <DataField>City_code</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="region_code">
+          <DataField>region_code</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="center_type">
+          <DataField>center_type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="op_area">
+          <DataField>op_area</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="dimCenterInfo_InsertDate">
+          <DataField>dimCenterInfo InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimCenterInfo_ModifyDate">
+          <DataField>dimCenterInfo ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CustomerSK">
+          <DataField>CustomerSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustomerAlternateID">
+          <DataField>CustomerAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustomerFirstName">
+          <DataField>CustomerFirstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerLastName">
+          <DataField>CustomerLastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerAddress">
+          <DataField>CustomerAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerState">
+          <DataField>CustomerState</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Zip">
+          <DataField>Zip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerMobile">
+          <DataField>CustomerMobile</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StateProvince">
+          <DataField>StateProvince</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StartDate">
+          <DataField>StartDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="EndDate">
+          <DataField>EndDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimCustomer_InsertDate">
+          <DataField>dimCustomer InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimCustomer_ModifyDate">
+          <DataField>dimCustomer ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DimDate_DateKey">
+          <DataField>DimDate DateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FullDateUK">
+          <DataField>FullDateUK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FullDateUSA">
+          <DataField>FullDateUSA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfMonth">
+          <DataField>DayOfMonth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DaySuffix">
+          <DataField>DaySuffix</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayName">
+          <DataField>DayName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekUSA">
+          <DataField>DayOfWeekUSA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekUK">
+          <DataField>DayOfWeekUK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekInMonth">
+          <DataField>DayOfWeekInMonth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekInYear">
+          <DataField>DayOfWeekInYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfQuarter">
+          <DataField>DayOfQuarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfYear">
+          <DataField>DayOfYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeekOfMonth">
+          <DataField>WeekOfMonth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeekOfQuarter">
+          <DataField>WeekOfQuarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeekOfYear">
+          <DataField>WeekOfYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Month">
+          <DataField>Month</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthName">
+          <DataField>MonthName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthOfQuarter">
+          <DataField>MonthOfQuarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quarter">
+          <DataField>Quarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="QuarterName">
+          <DataField>QuarterName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="YearName">
+          <DataField>YearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthYear">
+          <DataField>MonthYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MMYYYY">
+          <DataField>MMYYYY</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FirstDayOfMonth">
+          <DataField>FirstDayOfMonth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LastDayOfMonth">
+          <DataField>LastDayOfMonth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FirstDayOfQuarter">
+          <DataField>FirstDayOfQuarter</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LastDayOfQuarter">
+          <DataField>LastDayOfQuarter</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FirstDayOfYear">
+          <DataField>FirstDayOfYear</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LastDayOfYear">
+          <DataField>LastDayOfYear</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="IsHolidaySL">
+          <DataField>IsHolidaySL</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsWeekday">
+          <DataField>IsWeekday</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="HolidaySL">
+          <DataField>HolidaySL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="isCurrentDay">
+          <DataField>isCurrentDay</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="isDataAvailable">
+          <DataField>isDataAvailable</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="isLatestDataAvailable">
+          <DataField>isLatestDataAvailable</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MealSK">
+          <DataField>MealSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MealAlternateID">
+          <DataField>MealAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Catogery">
+          <DataField>Catogery</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Meal_type">
+          <DataField>Meal_type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dimMealInfo_InsertDate">
+          <DataField>dimMealInfo InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimMealInfo_ModifyDate">
+          <DataField>dimMealInfo ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OderSK">
+          <DataField>OderSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OderAlternateID">
+          <DataField>OderAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="num_of_oders">
+          <DataField>num_of_oders</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="dimOderInfo_InsertDate">
+          <DataField>dimOderInfo InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimOderInfo_ModifyDate">
+          <DataField>dimOderInfo ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CheckoutID">
+          <DataField>CheckoutID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustomerKey">
+          <DataField>CustomerKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CenterKey">
+          <DataField>CenterKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MealKey">
+          <DataField>MealKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OderKey">
+          <DataField>OderKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FactCheckout_DateKey">
+          <DataField>FactCheckout DateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Checkout_price">
+          <DataField>Checkout_price</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="base_price">
+          <DataField>base_price</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="week">
+          <DataField>week</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="emailer_for_promotion">
+          <DataField>emailer_for_promotion</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="accm_txn_create_time">
+          <DataField>accm_txn_create_time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="accm_txn_complete_time">
+          <DataField>accm_txn_complete_time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txn_process_time_hours">
+          <DataField>txn_process_time_hours</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FactCheckout_ModifyDate">
+          <DataField>FactCheckout ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="check_date">
+          <DataField>check_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix2">
+            <TablixCorner>
+              <TablixCornerRows>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox17">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Meal type</Value>
+                                <Style>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox17</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </TopBorder>
+                          <BottomBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <LeftBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>Aqua</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox15">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Catogery</Value>
+                                <Style>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox15</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </TopBorder>
+                          <BottomBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <LeftBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>Aqua</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                </TablixCornerRow>
+              </TablixCornerRows>
+            </TablixCorner>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="base_price">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!base_price.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Format>#,0.00;(#,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>base_price</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox26">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!base_price.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox26</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox24">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!base_price.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox24</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox27">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!base_price.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Normal</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox27</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox21">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!base_price.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox21</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox28">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!base_price.Value)</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox28</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="MonthName">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!MonthName.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!MonthName.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.25in</Size>
+                    <CellContents>
+                      <Textbox Name="MonthName">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!MonthName.Value</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>MonthName</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </TopBorder>
+                          <BottomBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <LeftBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>Aqua</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>0.25in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox25">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Total</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox25</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </TopBorder>
+                          <BottomBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <LeftBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>Aqua</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                </TablixMember>
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Meal_type">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Meal_type.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Meal_type.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>1in</Size>
+                    <CellContents>
+                      <Textbox Name="Meal_type">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!Meal_type.Value</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Meal_type</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </TopBorder>
+                          <BottomBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <LeftBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>LightBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Catogery">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!Catogery.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!Catogery.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixHeader>
+                        <Size>1in</Size>
+                        <CellContents>
+                          <Textbox Name="Catogery">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!Catogery.Value</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Catogery</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <TopBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </TopBorder>
+                              <BottomBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </BottomBorder>
+                              <LeftBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </LeftBorder>
+                              <RightBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </RightBorder>
+                              <BackgroundColor>LightBlue</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember />
+                      </TablixMembers>
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                        <ToggleItem>Meal_type</ToggleItem>
+                      </Visibility>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1in</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox23">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>Total</Value>
+                                    <Style>
+                                      <FontWeight>Normal</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox23</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <TopBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </TopBorder>
+                              <BottomBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </BottomBorder>
+                              <LeftBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </LeftBorder>
+                              <RightBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </RightBorder>
+                              <BackgroundColor>LightBlue</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>1in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox19">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Total</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox19</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </TopBorder>
+                          <BottomBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <LeftBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>Aqua</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1in</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox20">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value />
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox20</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <TopBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </TopBorder>
+                              <BottomBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </BottomBorder>
+                              <LeftBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </LeftBorder>
+                              <RightBorder>
+                                <Color>White</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </RightBorder>
+                              <BackgroundColor>LightBlue</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
+                  </TablixMembers>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DataSet2</DataSetName>
+            <Top>0.5in</Top>
+            <Left>0.63333in</Left>
+            <Height>1in</Height>
+            <Width>4in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>3.7in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>12.73333in</Width>
+      <Page>
+        <PageFooter>
+          <Height>1.85833in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.2in</Top>
+              <Left>4.63333in</Left>
+              <Height>0.25in</Height>
+              <Width>2in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>b394a8ac-fbfd-48f6-8eb3-dc60df0bde54</rd:ReportID>
+</Report>

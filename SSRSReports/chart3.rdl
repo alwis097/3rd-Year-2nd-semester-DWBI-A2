@@ -1,0 +1,1025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=ALWIS-PC;Initial Catalog=IT19960814-DW</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>c9e6885d-1b2e-46f7-8fb7-63a1c42f7e7c</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT
+  dimCenterInfo.CenterSK
+  ,dimCenterInfo.CenterAlternateID
+  ,dimCenterInfo.City_code
+  ,dimCenterInfo.region_code
+  ,dimCenterInfo.center_type
+  ,dimCenterInfo.op_area
+  ,dimCenterInfo.InsertDate AS [dimCenterInfo InsertDate]
+  ,dimCenterInfo.ModifyDate AS [dimCenterInfo ModifyDate]
+  ,dimCustomer.CustomerSK
+  ,dimCustomer.CustomerAlternateID
+  ,dimCustomer.CustomerFirstName
+  ,dimCustomer.CustomerLastName
+  ,dimCustomer.CustomerAddress
+  ,dimCustomer.City
+  ,dimCustomer.CustomerState
+  ,dimCustomer.Zip
+  ,dimCustomer.CustomerMobile
+  ,dimCustomer.StateProvince
+  ,dimCustomer.StartDate
+  ,dimCustomer.EndDate
+  ,dimCustomer.InsertDate AS [dimCustomer InsertDate]
+  ,dimCustomer.ModifyDate AS [dimCustomer ModifyDate]
+  ,DimDate.DateKey AS [DimDate DateKey]
+  ,DimDate.[Date]
+  ,DimDate.FullDateUK
+  ,DimDate.FullDateUSA
+  ,DimDate.DayOfMonth
+  ,DimDate.DaySuffix
+  ,DimDate.DayName
+  ,DimDate.DayOfWeekUSA
+  ,DimDate.DayOfWeekUK
+  ,DimDate.DayOfWeekInMonth
+  ,DimDate.DayOfWeekInYear
+  ,DimDate.DayOfQuarter
+  ,DimDate.DayOfYear
+  ,DimDate.WeekOfMonth
+  ,DimDate.WeekOfQuarter
+  ,DimDate.WeekOfYear
+  ,DimDate.[Month]
+  ,DimDate.MonthName
+  ,DimDate.MonthOfQuarter
+  ,DimDate.Quarter
+  ,DimDate.QuarterName
+  ,DimDate.[Year]
+  ,DimDate.YearName
+  ,DimDate.MonthYear
+  ,DimDate.MMYYYY
+  ,DimDate.FirstDayOfMonth
+  ,DimDate.LastDayOfMonth
+  ,DimDate.FirstDayOfQuarter
+  ,DimDate.LastDayOfQuarter
+  ,DimDate.FirstDayOfYear
+  ,DimDate.LastDayOfYear
+  ,DimDate.IsHolidaySL
+  ,DimDate.IsWeekday
+  ,DimDate.HolidaySL
+  ,DimDate.isCurrentDay
+  ,DimDate.isDataAvailable
+  ,DimDate.isLatestDataAvailable
+  ,dimMealInfo.MealSK
+  ,dimMealInfo.MealAlternateID
+  ,dimMealInfo.Catogery
+  ,dimMealInfo.Meal_type
+  ,dimMealInfo.InsertDate AS [dimMealInfo InsertDate]
+  ,dimMealInfo.ModifyDate AS [dimMealInfo ModifyDate]
+  ,dimOderInfo.OderSK
+  ,dimOderInfo.OderAlternateID
+  ,dimOderInfo.num_of_oders
+  ,dimOderInfo.InsertDate AS [dimOderInfo InsertDate]
+  ,dimOderInfo.ModifyDate AS [dimOderInfo ModifyDate]
+  ,FactCheckout.CheckoutID
+  ,FactCheckout.CustomerKey
+  ,FactCheckout.CenterKey
+  ,FactCheckout.MealKey
+  ,FactCheckout.OderKey
+  ,FactCheckout.DateKey AS [FactCheckout DateKey]
+  ,FactCheckout.Checkout_price
+  ,FactCheckout.base_price
+  ,FactCheckout.week
+  ,FactCheckout.emailer_for_promotion
+  ,FactCheckout.accm_txn_create_time
+  ,FactCheckout.accm_txn_complete_time
+  ,FactCheckout.txn_process_time_hours
+  ,FactCheckout.ModifyDate AS [FactCheckout ModifyDate]
+  ,FactCheckout.check_date
+FROM
+  FactCheckout
+  INNER JOIN dimCustomer
+    ON FactCheckout.CustomerKey = dimCustomer.CustomerSK
+  INNER JOIN dimMealInfo
+    ON FactCheckout.MealKey = dimMealInfo.MealSK
+  INNER JOIN dimCenterInfo
+    ON FactCheckout.CenterKey = dimCenterInfo.CenterSK
+  INNER JOIN dimOderInfo
+    ON FactCheckout.OderKey = dimOderInfo.OderSK
+  INNER JOIN DimDate
+    ON FactCheckout.DateKey = DimDate.DateKey</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="CenterSK" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="CenterAlternateID" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="City_code" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="region_code" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="center_type" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="op_area" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimCenterInfo" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerSK" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerAlternateID" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerFirstName" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerLastName" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerAddress" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="City" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerState" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="Zip" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="CustomerMobile" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="StateProvince" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="StartDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="EndDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimCustomer" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DateKey" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Date" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FullDateUK" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FullDateUSA" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DaySuffix" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekUSA" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekUK" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekInMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfWeekInYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="DayOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="WeekOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="WeekOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="WeekOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Month" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MonthName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MonthOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Quarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="QuarterName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="Year" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="YearName" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MonthYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="MMYYYY" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FirstDayOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="LastDayOfMonth" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FirstDayOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="LastDayOfQuarter" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="FirstDayOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="LastDayOfYear" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="IsHolidaySL" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="IsWeekday" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="HolidaySL" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="isCurrentDay" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="isDataAvailable" />
+              <ColumnExpression ColumnOwner="DimDate" ColumnName="isLatestDataAvailable" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="MealSK" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="MealAlternateID" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="Catogery" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="Meal_type" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimMealInfo" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="OderSK" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="OderAlternateID" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="num_of_oders" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="InsertDate" />
+              <ColumnExpression ColumnOwner="dimOderInfo" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="CheckoutID" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="CustomerKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="CenterKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="MealKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="OderKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="DateKey" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="Checkout_price" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="base_price" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="week" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="emailer_for_promotion" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="accm_txn_create_time" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="accm_txn_complete_time" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="txn_process_time_hours" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="ModifyDate" />
+              <ColumnExpression ColumnOwner="FactCheckout" ColumnName="check_date" />
+            </SelectedColumns>
+            <Joins>
+              <Join Type="CROSS JOIN" ColumnOwner="FactCheckout" />
+              <Join Type="INNER JOIN" ColumnOwner="dimCustomer">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="CustomerKey" />
+                  <To ColumnOwner="dimCustomer" ColumnName="CustomerSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="dimMealInfo">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="MealKey" />
+                  <To ColumnOwner="dimMealInfo" ColumnName="MealSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="dimCenterInfo">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="CenterKey" />
+                  <To ColumnOwner="dimCenterInfo" ColumnName="CenterSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="dimOderInfo">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="OderKey" />
+                  <To ColumnOwner="dimOderInfo" ColumnName="OderSK" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="DimDate">
+                <On>
+                  <From ColumnOwner="FactCheckout" ColumnName="DateKey" />
+                  <To ColumnOwner="DimDate" ColumnName="DateKey" />
+                </On>
+              </Join>
+            </Joins>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="CenterSK">
+          <DataField>CenterSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CenterAlternateID">
+          <DataField>CenterAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="City_code">
+          <DataField>City_code</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="region_code">
+          <DataField>region_code</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="center_type">
+          <DataField>center_type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="op_area">
+          <DataField>op_area</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="dimCenterInfo_InsertDate">
+          <DataField>dimCenterInfo InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimCenterInfo_ModifyDate">
+          <DataField>dimCenterInfo ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CustomerSK">
+          <DataField>CustomerSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustomerAlternateID">
+          <DataField>CustomerAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustomerFirstName">
+          <DataField>CustomerFirstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerLastName">
+          <DataField>CustomerLastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerAddress">
+          <DataField>CustomerAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerState">
+          <DataField>CustomerState</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Zip">
+          <DataField>Zip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerMobile">
+          <DataField>CustomerMobile</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StateProvince">
+          <DataField>StateProvince</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StartDate">
+          <DataField>StartDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="EndDate">
+          <DataField>EndDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimCustomer_InsertDate">
+          <DataField>dimCustomer InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimCustomer_ModifyDate">
+          <DataField>dimCustomer ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DimDate_DateKey">
+          <DataField>DimDate DateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FullDateUK">
+          <DataField>FullDateUK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FullDateUSA">
+          <DataField>FullDateUSA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfMonth">
+          <DataField>DayOfMonth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DaySuffix">
+          <DataField>DaySuffix</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayName">
+          <DataField>DayName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekUSA">
+          <DataField>DayOfWeekUSA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekUK">
+          <DataField>DayOfWeekUK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekInMonth">
+          <DataField>DayOfWeekInMonth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfWeekInYear">
+          <DataField>DayOfWeekInYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfQuarter">
+          <DataField>DayOfQuarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayOfYear">
+          <DataField>DayOfYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeekOfMonth">
+          <DataField>WeekOfMonth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeekOfQuarter">
+          <DataField>WeekOfQuarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeekOfYear">
+          <DataField>WeekOfYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Month">
+          <DataField>Month</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthName">
+          <DataField>MonthName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthOfQuarter">
+          <DataField>MonthOfQuarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quarter">
+          <DataField>Quarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="QuarterName">
+          <DataField>QuarterName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="YearName">
+          <DataField>YearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MonthYear">
+          <DataField>MonthYear</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MMYYYY">
+          <DataField>MMYYYY</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FirstDayOfMonth">
+          <DataField>FirstDayOfMonth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LastDayOfMonth">
+          <DataField>LastDayOfMonth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FirstDayOfQuarter">
+          <DataField>FirstDayOfQuarter</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LastDayOfQuarter">
+          <DataField>LastDayOfQuarter</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FirstDayOfYear">
+          <DataField>FirstDayOfYear</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LastDayOfYear">
+          <DataField>LastDayOfYear</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="IsHolidaySL">
+          <DataField>IsHolidaySL</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsWeekday">
+          <DataField>IsWeekday</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="HolidaySL">
+          <DataField>HolidaySL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="isCurrentDay">
+          <DataField>isCurrentDay</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="isDataAvailable">
+          <DataField>isDataAvailable</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="isLatestDataAvailable">
+          <DataField>isLatestDataAvailable</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MealSK">
+          <DataField>MealSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MealAlternateID">
+          <DataField>MealAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Catogery">
+          <DataField>Catogery</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Meal_type">
+          <DataField>Meal_type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dimMealInfo_InsertDate">
+          <DataField>dimMealInfo InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimMealInfo_ModifyDate">
+          <DataField>dimMealInfo ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OderSK">
+          <DataField>OderSK</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OderAlternateID">
+          <DataField>OderAlternateID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="num_of_oders">
+          <DataField>num_of_oders</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="dimOderInfo_InsertDate">
+          <DataField>dimOderInfo InsertDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="dimOderInfo_ModifyDate">
+          <DataField>dimOderInfo ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CheckoutID">
+          <DataField>CheckoutID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustomerKey">
+          <DataField>CustomerKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CenterKey">
+          <DataField>CenterKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MealKey">
+          <DataField>MealKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OderKey">
+          <DataField>OderKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FactCheckout_DateKey">
+          <DataField>FactCheckout DateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Checkout_price">
+          <DataField>Checkout_price</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="base_price">
+          <DataField>base_price</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="week">
+          <DataField>week</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="emailer_for_promotion">
+          <DataField>emailer_for_promotion</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="accm_txn_create_time">
+          <DataField>accm_txn_create_time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="accm_txn_complete_time">
+          <DataField>accm_txn_complete_time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="txn_process_time_hours">
+          <DataField>txn_process_time_hours</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FactCheckout_ModifyDate">
+          <DataField>FactCheckout ModifyDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="check_date">
+          <DataField>check_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Chart Name="Chart1">
+            <ChartCategoryHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart1_CategoryGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!CustomerState.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!CustomerState.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!CustomerState.Value</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartCategoryHierarchy>
+            <ChartSeriesHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Label>Checkout price</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartSeriesHierarchy>
+            <ChartData>
+              <ChartSeriesCollection>
+                <ChartSeries Name="Checkout_price">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Sum(Fields!Checkout_price.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </ChartDataLabel>
+                      <ToolTip>#VALY</ToolTip>
+                      <Style />
+                      <ChartMarker>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Shape</Type>
+                  <Style>
+                    <ShadowOffset>0pt</ShadowOffset>
+                  </Style>
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+              </ChartSeriesCollection>
+            </ChartData>
+            <ChartAreas>
+              <ChartArea Name="Default">
+                <ChartCategoryAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartCategoryAxes>
+                <ChartValueAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartValueAxes>
+                <Style>
+                  <BackgroundColor>White</BackgroundColor>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                </Style>
+              </ChartArea>
+            </ChartAreas>
+            <ChartLegends>
+              <ChartLegend Name="Default">
+                <Style>
+                  <Border>
+                    <Color>#5c5c5c</Color>
+                  </Border>
+                  <BackgroundGradientType>TopBottom</BackgroundGradientType>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartLegendTitle>
+                  <Caption />
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </ChartLegendTitle>
+                <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+                <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+              </ChartLegend>
+            </ChartLegends>
+            <ChartTitles>
+              <ChartTitle Name="Default">
+                <Caption>Customer state / checkout price</Caption>
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextAlign>Left</TextAlign>
+                  <VerticalAlign>Top</VerticalAlign>
+                  <Color>#a6a6a6</Color>
+                </Style>
+                <Position>TopLeft</Position>
+              </ChartTitle>
+            </ChartTitles>
+            <Palette>Pacific</Palette>
+            <ChartBorderSkin>
+              <Style>
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <Color>White</Color>
+              </Style>
+            </ChartBorderSkin>
+            <ChartNoDataMessage Name="NoDataMessage">
+              <Caption>No Data Available</Caption>
+              <Style>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>General</TextAlign>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </ChartNoDataMessage>
+            <DataSetName>DataSet1</DataSetName>
+            <Height>3.5in</Height>
+            <Width>5in</Width>
+            <Style>
+              <Border>
+                <Color>#5c5c5c</Color>
+                <Style>None</Style>
+                <Width>2pt</Width>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </Chart>
+        </ReportItems>
+        <Height>3.5in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>6in</Width>
+      <Page>
+        <PageFooter>
+          <Height>0.45in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.2in</Top>
+              <Left>4in</Left>
+              <Height>0.25in</Height>
+              <Width>2in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>3cedeeec-6908-429b-8c88-e1e9462c8a16</rd:ReportID>
+</Report>
